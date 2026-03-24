@@ -1,0 +1,227 @@
+Root: c:\Users\subli\Desktop\Intellij Projects\LiosAPI
+Generated: 2026-02-12_12-57-35
+
+=== gradle.properties (root) relevant keys ===
+allow_changing_versions = true
+allow_changing_version = None
+org.gradle.project.allow_changing_versions = None
+org.gradle.project.allow_changing_version = None
+
+=== Environment variables ===
+ALLOW_CHANGING_VERSIONS = None
+ALLOW_CHANGING_VERSION = None
+
+=== Scan summary ===
+Files scanned: 31
+Total hits: 10
+cacheChangingModulesFor: 1
+cacheDynamicVersionsFor: 1
+componentSelection: 0
+disallowChangingVersions: 0
+env_allowChanging: 2
+failOnChangingVersions: 1
+gradleProperty_allowChanging: 2
+resolutionStrategy: 1
+sysprop_allowChanging: 2
+
+=== Detailed hits (with context) ===
+
+========================================================================================================================
+File: buildSrc\src\main\groovy\multiloader-common.gradle
+Kind: cacheChangingModulesFor
+Line: 60
+Text:         cacheChangingModulesFor 0, 'seconds'
+------------------------------------------------------------------------------------------------------------------------
+      54 | 
+      55 | configurations.configureEach {
+      56 |     resolutionStrategy {
+      57 |         if (!allowChanging) {
+      58 |             failOnChangingVersions()
+      59 |         }
+>>    60 |         cacheChangingModulesFor 0, 'seconds'
+      61 |         cacheDynamicVersionsFor 0, 'seconds'
+      62 |     }
+      63 | }
+      64 | 
+      65 | ['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
+      66 |     configurations."$variant".outgoing {
+
+========================================================================================================================
+File: buildSrc\src\main\groovy\multiloader-common.gradle
+Kind: cacheDynamicVersionsFor
+Line: 61
+Text:         cacheDynamicVersionsFor 0, 'seconds'
+------------------------------------------------------------------------------------------------------------------------
+      55 | configurations.configureEach {
+      56 |     resolutionStrategy {
+      57 |         if (!allowChanging) {
+      58 |             failOnChangingVersions()
+      59 |         }
+      60 |         cacheChangingModulesFor 0, 'seconds'
+>>    61 |         cacheDynamicVersionsFor 0, 'seconds'
+      62 |     }
+      63 | }
+      64 | 
+      65 | ['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
+      66 |     configurations."$variant".outgoing {
+      67 |         capability("$group:${project.name}:$version")
+
+========================================================================================================================
+File: buildSrc\src\main\groovy\multiloader-common.gradle
+Kind: env_allowChanging
+Line: 50
+Text:                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSIONS"))
+------------------------------------------------------------------------------------------------------------------------
+      44 | }
+      45 | def allowChanging = (
+      46 |         providers.gradleProperty("allow_changing_versions")
+      47 |                 .orElse(providers.gradleProperty("allow_changing_version"))
+      48 |                 .orElse(providers.systemProperty("allow_changing_versions"))
+      49 |                 .orElse(providers.systemProperty("allow_changing_version"))
+>>    50 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSIONS"))
+      51 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSION"))
+      52 | ).map { it.toString().toBoolean() }.orElse(false).get()
+      53 | 
+      54 | 
+      55 | configurations.configureEach {
+      56 |     resolutionStrategy {
+
+========================================================================================================================
+File: buildSrc\src\main\groovy\multiloader-common.gradle
+Kind: env_allowChanging
+Line: 51
+Text:                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSION"))
+------------------------------------------------------------------------------------------------------------------------
+      45 | def allowChanging = (
+      46 |         providers.gradleProperty("allow_changing_versions")
+      47 |                 .orElse(providers.gradleProperty("allow_changing_version"))
+      48 |                 .orElse(providers.systemProperty("allow_changing_versions"))
+      49 |                 .orElse(providers.systemProperty("allow_changing_version"))
+      50 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSIONS"))
+>>    51 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSION"))
+      52 | ).map { it.toString().toBoolean() }.orElse(false).get()
+      53 | 
+      54 | 
+      55 | configurations.configureEach {
+      56 |     resolutionStrategy {
+      57 |         if (!allowChanging) {
+
+========================================================================================================================
+File: buildSrc\src\main\groovy\multiloader-common.gradle
+Kind: failOnChangingVersions
+Line: 58
+Text:             failOnChangingVersions()
+------------------------------------------------------------------------------------------------------------------------
+      52 | ).map { it.toString().toBoolean() }.orElse(false).get()
+      53 | 
+      54 | 
+      55 | configurations.configureEach {
+      56 |     resolutionStrategy {
+      57 |         if (!allowChanging) {
+>>    58 |             failOnChangingVersions()
+      59 |         }
+      60 |         cacheChangingModulesFor 0, 'seconds'
+      61 |         cacheDynamicVersionsFor 0, 'seconds'
+      62 |     }
+      63 | }
+      64 | 
+
+========================================================================================================================
+File: buildSrc\src\main\groovy\multiloader-common.gradle
+Kind: gradleProperty_allowChanging
+Line: 46
+Text:         providers.gradleProperty("allow_changing_versions")
+------------------------------------------------------------------------------------------------------------------------
+      40 |     maven {
+      41 |         name = 'BlameJared'
+      42 |         url = 'https://maven.blamejared.com'
+      43 |     }
+      44 | }
+      45 | def allowChanging = (
+>>    46 |         providers.gradleProperty("allow_changing_versions")
+      47 |                 .orElse(providers.gradleProperty("allow_changing_version"))
+      48 |                 .orElse(providers.systemProperty("allow_changing_versions"))
+      49 |                 .orElse(providers.systemProperty("allow_changing_version"))
+      50 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSIONS"))
+      51 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSION"))
+      52 | ).map { it.toString().toBoolean() }.orElse(false).get()
+
+========================================================================================================================
+File: buildSrc\src\main\groovy\multiloader-common.gradle
+Kind: gradleProperty_allowChanging
+Line: 47
+Text:                 .orElse(providers.gradleProperty("allow_changing_version"))
+------------------------------------------------------------------------------------------------------------------------
+      41 |         name = 'BlameJared'
+      42 |         url = 'https://maven.blamejared.com'
+      43 |     }
+      44 | }
+      45 | def allowChanging = (
+      46 |         providers.gradleProperty("allow_changing_versions")
+>>    47 |                 .orElse(providers.gradleProperty("allow_changing_version"))
+      48 |                 .orElse(providers.systemProperty("allow_changing_versions"))
+      49 |                 .orElse(providers.systemProperty("allow_changing_version"))
+      50 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSIONS"))
+      51 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSION"))
+      52 | ).map { it.toString().toBoolean() }.orElse(false).get()
+      53 | 
+
+========================================================================================================================
+File: buildSrc\src\main\groovy\multiloader-common.gradle
+Kind: resolutionStrategy
+Line: 56
+Text:     resolutionStrategy {
+------------------------------------------------------------------------------------------------------------------------
+      50 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSIONS"))
+      51 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSION"))
+      52 | ).map { it.toString().toBoolean() }.orElse(false).get()
+      53 | 
+      54 | 
+      55 | configurations.configureEach {
+>>    56 |     resolutionStrategy {
+      57 |         if (!allowChanging) {
+      58 |             failOnChangingVersions()
+      59 |         }
+      60 |         cacheChangingModulesFor 0, 'seconds'
+      61 |         cacheDynamicVersionsFor 0, 'seconds'
+      62 |     }
+
+========================================================================================================================
+File: buildSrc\src\main\groovy\multiloader-common.gradle
+Kind: sysprop_allowChanging
+Line: 48
+Text:                 .orElse(providers.systemProperty("allow_changing_versions"))
+------------------------------------------------------------------------------------------------------------------------
+      42 |         url = 'https://maven.blamejared.com'
+      43 |     }
+      44 | }
+      45 | def allowChanging = (
+      46 |         providers.gradleProperty("allow_changing_versions")
+      47 |                 .orElse(providers.gradleProperty("allow_changing_version"))
+>>    48 |                 .orElse(providers.systemProperty("allow_changing_versions"))
+      49 |                 .orElse(providers.systemProperty("allow_changing_version"))
+      50 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSIONS"))
+      51 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSION"))
+      52 | ).map { it.toString().toBoolean() }.orElse(false).get()
+      53 | 
+      54 | 
+
+========================================================================================================================
+File: buildSrc\src\main\groovy\multiloader-common.gradle
+Kind: sysprop_allowChanging
+Line: 49
+Text:                 .orElse(providers.systemProperty("allow_changing_version"))
+------------------------------------------------------------------------------------------------------------------------
+      43 |     }
+      44 | }
+      45 | def allowChanging = (
+      46 |         providers.gradleProperty("allow_changing_versions")
+      47 |                 .orElse(providers.gradleProperty("allow_changing_version"))
+      48 |                 .orElse(providers.systemProperty("allow_changing_versions"))
+>>    49 |                 .orElse(providers.systemProperty("allow_changing_version"))
+      50 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSIONS"))
+      51 |                 .orElse(providers.environmentVariable("ALLOW_CHANGING_VERSION"))
+      52 | ).map { it.toString().toBoolean() }.orElse(false).get()
+      53 | 
+      54 | 
+      55 | configurations.configureEach {
